@@ -1,9 +1,10 @@
 const { google } = require('googleapis')
 const ExcelModel = require('../Models/ExcelModel')
 const UserModel = require('../Models/UserModel')
+require('dotenv').config()
 
 const auth = new google.auth.GoogleAuth({
-    keyFile: '/media/elamparithi/New Volume/NoteMe/NoteMeback/google.json',    
+    keyFile: process.env.FILE_ACCESS,    
     scopes: ['https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive']
 });
 
