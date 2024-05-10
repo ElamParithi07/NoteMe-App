@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const ExcelModel = mongoose.model('excelsheets', mongoose.Schema({
-    createdBy: {type: mongoose.Schema.Types.ObjectId,required:true},    
+    createdBy: {type: mongoose.Schema.Types.ObjectId,ref:'UserModel',required:true},    
     name: { type: String, required: true },
     sheetURL: { type: String, required: true },
     labels: [{ type: String, required: true }]

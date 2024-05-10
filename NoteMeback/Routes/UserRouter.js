@@ -1,9 +1,12 @@
 const express = require('express')
 const checkAuthToken = require('../middleware');
-const UserControl = express.Router();
+const UserRouter = express.Router();
 
-const {register,login} = require('../Services/UserService');
-UserControl.post('/register',register)
-UserControl.post('/login',login)
+const {register, sendotp, verifyotp, checkvalidemail} = require('../Services/UserService');
 
-module.exports = UserControl
+UserRouter.post('/register',register)
+UserRouter.post('/sendotp', sendotp)
+UserRouter.post('/verifyotp', verifyotp)
+UserRouter.post('/verifyemail', checkvalidemail)
+
+module.exports = UserRouter

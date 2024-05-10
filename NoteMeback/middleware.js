@@ -13,11 +13,11 @@ const checkAuthToken = async(req, res, next) => {
     
     try{
         const decoded = jwt.verify(token,SECRET_KEY)
-        req.user= decoded
-        const isValid = await UserModel.findOne({_id : decoded.userid})
+        const isValid = await UserModel.findOne({email : decoded.email})
         if(!isValid) return res.status(401).json("user not found");
         req.locals = {
-            userid: decoded.userid
+            email: decoded.email,
+            userid:decoded.userid
         };
         next(); // Pass control to the next middleware or route handler
     }
