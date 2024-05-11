@@ -1,0 +1,264 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "NoteMe",
+    "description": "NoteMe is an app where people can create, update and share sheets",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://{{baseurl}}"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "UserTest",
+      "description": "This is an User Auth APIs"
+    },
+    {
+      "name": "ExcelTest"
+    },
+    {
+      "name": "MyData"
+    }
+  ],
+  "paths": {
+    "/auth/sendotp": {
+      "post": {
+        "tags": [
+          "UserTest"
+        ],
+        "summary": "sendotp",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "elamparthi.s2021it@sece.ac.in"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "UserTest"
+        ],
+        "summary": "User Register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "elamparthi.s2021it@sece.ac.in",
+                  "name": "Parithi",
+                  "password": "123456"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/auth/verifyotp": {
+      "post": {
+        "tags": [
+          "UserTest"
+        ],
+        "summary": "verifyotp",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "email": "elamparthi.s2021it@sece.ac.in",
+                  "otp": "968986"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/excel/updateexcel": {
+      "post": {
+        "tags": [
+          "ExcelTest"
+        ],
+        "summary": "UpdateExcel",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "Reference": "Elamparithi",
+                  "data": {
+                    "Department": "Information Technology",
+                    "Phonenumber": "9597183877"
+                  },
+                  "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1e16VnXnaCCGUqPP0k-ySGa8As_Bwq8YTks5tk8_0QFs"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/excel/createexcel": {
+      "post": {
+        "tags": [
+          "ExcelTest"
+        ],
+        "summary": "CreateExcel",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "name": "Finaltestbeforehost5",
+                  "labels": [
+                    "Name",
+                    "Department",
+                    "Phonenumber",
+                    "RollNO",
+                    "Domain"
+                  ],
+                  "namelist": [
+                    "Elamparithi",
+                    "Magesh krishna",
+                    "Mahesh",
+                    "Suriya",
+                    "Pranav",
+                    "Sanjay",
+                    "Vimal"
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/excel/getexcel": {
+      "get": {
+        "tags": [
+          "ExcelTest"
+        ],
+        "summary": "GetExcel",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/data/updatedata": {
+      "post": {
+        "tags": [
+          "MyData"
+        ],
+        "summary": "updatedata",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "mobile": "9697184876",
+                  "NamewitInitial": "Elamparithi S"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

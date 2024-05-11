@@ -1,15 +1,57 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { Profiler } from 'react'
+import { BackHandler, StyleSheet, Text, ToastAndroid, View } from 'react-native'
+import React, { Profiler, useEffect } from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Home from '../Home/Home';
 import Exceledit from '../Exceledit/Exceledit';
 import { AntDesign } from '@expo/vector-icons';
 import Profile from '../Profile/Profile';
 import Polls from '../Polls/Polls';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Tab = createBottomTabNavigator();
 
-const UserNavigation = () => {
+const UserNavigation = ({navigation}) => {
+
+
+  useEffect(() => {
+    const handleBackPress = async () => {
+      try {
+        const userData = await AsyncStorage.getItem('authToken');
+        if (userData) {
+          if (navigation.isFocused()) {
+            BackHandler.exitApp(); // If on the home page, exit the app
+            return true; // Prevent default back action
+          } else {
+            navigation.navigate("Home"); // If not on home page, navigate to home
+            return true; // Prevent default back action
+          }
+        }
+        else{
+          showToast("Session Expired")
+          navigation.navigate("Onboard")
+        }
+      } catch (error) {
+        console.error('Error checking user login status:', error);
+      }
+      return false; // Allow the default back action
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      'hardwareBackPress',
+      handleBackPress
+    );
+
+    return () => {
+      backHandler.remove();
+    };
+  }, [navigation]); 
+
+  function showToast(e) {
+    ToastAndroid.show(e, ToastAndroid.SHORT);
+}
+
+
+
   return (
     <Tab.Navigator
     screenOptions={({ route }) => ({

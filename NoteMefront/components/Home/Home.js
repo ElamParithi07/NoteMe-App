@@ -50,6 +50,8 @@ const Home = () => {
         </View>
     );
 
+    
+
     return (
         <View style={styles.container}>
             <View style={styles.headercontainer}>

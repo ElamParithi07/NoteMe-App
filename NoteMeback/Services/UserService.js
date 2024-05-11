@@ -125,9 +125,12 @@ async function verifyotp(req, res) {
             const authtoken = jwt.sign({ email: email, userid: user._id }, key);
 
             //create a datamodel with default values
-            const data = new MyDataModel({Owner:user._id,email:email})
-            await data.save()
-            const updateuser = await UserModel.findOneAndUpdate({email:email},{mydata:data._id},{new:true})
+            const alreadyexists = await MyDataModel.findOne({Owner:user._id})
+            if(!alreadyexists){
+                const data = new MyDataModel({Owner:user._id,email:email})
+                await data.save()
+                const updateuser = await UserModel.findOneAndUpdate({email:email},{mydata:data._id},{new:true})
+            }
             return res.status(200).json({status:true, message: "Login successful!", authtoken: authtoken});
         } else {
             return res.status(400).json({status:false, message: "Invalid OTP" });

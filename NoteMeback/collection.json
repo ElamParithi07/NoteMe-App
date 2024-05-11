@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "56575371-33da-44a0-87ea-fbddd0b99e15",
+		"name": "NoteMe",
+		"description": "NoteMe is an app where people can create, update and share sheets",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24279490"
+	},
+	"item": [
+		{
+			"name": "UserTest",
+			"item": [
+				{
+					"name": "sendotp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"elamparthi.s2021it@sece.ac.in\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/sendotp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"sendotp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"elamparthi.s2021it@sece.ac.in\",\r\n    \"name\":\"Parithi\",\r\n    \"password\":\"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyotp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\":\"elamparthi.s2021it@sece.ac.in\",\n    \"otp\":\"968986\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/verifyotp",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"verifyotp"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "This is an User Auth APIs"
+		},
+		{
+			"name": "ExcelTest",
+			"item": [
+				{
+					"name": "UpdateExcel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsYW1wYXJ0aGkuczIwMjFpdEBzZWNlLmFjLmluIiwidXNlcmlkIjoiNjYzY2ZlMWVjNjdkMDFiZjA0ZDU5YjVmIiwiaWF0IjoxNzE1MjczMzk1fQ.JbWZDySzsF8qUFO9ikElNz6x3VPbe8z8YbNjy60BIeA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Reference\":\"Elamparithi\",\r\n    \"data\":{\r\n        \"Department\":\"Information Technology\",\r\n        \"Phonenumber\":\"9597183877\"\r\n    },\r\n    \"spreadsheetUrl\":\"https://docs.google.com/spreadsheets/d/1e16VnXnaCCGUqPP0k-ySGa8As_Bwq8YTks5tk8_0QFs\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/excel/updateexcel",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"excel",
+								"updateexcel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreateExcel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsYW1wYXJ0aGkuczIwMjFpdEBzZWNlLmFjLmluIiwidXNlcmlkIjoiNjYzZDAzMjUwOWIwMDQxOGQzYWUyNmI0IiwiaWF0IjoxNzE1Mjc0NTYzfQ.u775lKG_Z_ThbvYsHxB7SlK9DQjwTVCdPSSkcCV8ZT8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Finaltestbeforehost5\",\r\n    \"labels\":[\r\n        \"Name\",\r\n        \"Department\",\r\n        \"Phonenumber\",\r\n        \"RollNO\",\r\n        \"Domain\"\r\n    ],\r\n    \"namelist\":[\r\n        \"Elamparithi\",\r\n        \"Magesh krishna\",\r\n        \"Mahesh\",\r\n        \"Suriya\",\r\n        \"Pranav\",\r\n        \"Sanjay\",\r\n        \"Vimal\"\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/excel/createexcel",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"excel",
+								"createexcel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetExcel",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsYW1wYXJ0aGkuczIwMjFpdEBzZWNlLmFjLmluIiwidXNlcmlkIjoiNjYzY2ZlMWVjNjdkMDFiZjA0ZDU5YjVmIiwiaWF0IjoxNzE1MjczMzk1fQ.JbWZDySzsF8qUFO9ikElNz6x3VPbe8z8YbNjy60BIeA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/excel/getexcel",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"excel",
+								"getexcel"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MyData",
+			"item": [
+				{
+					"name": "updatedata",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVsYW1wYXJ0aGkuczIwMjFpdEBzZWNlLmFjLmluIiwidXNlcmlkIjoiNjYzY2ZlMWVjNjdkMDFiZjA0ZDU5YjVmIiwiaWF0IjoxNzE1MjczMzk1fQ.JbWZDySzsF8qUFO9ikElNz6x3VPbe8z8YbNjy60BIeA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"mobile\":\"9697184876\",\n    \"NamewitInitial\":\"Elamparithi S\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/data/updatedata",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"data",
+								"updatedata"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

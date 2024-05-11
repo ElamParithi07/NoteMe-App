@@ -12,7 +12,9 @@ import Onboard from './components/UserLoginSignup/Onboard';
 import UserNavigation from './components/UserNavigation.js/UserNavigation';
 import Settingspage from './components/Settingspage/Settingspage';
 import Multiselect from './components/Exceledit/Multiselect';
-import MySheets from './components/Profile/MySheets'
+import MySheets from './components/Profile/MySheets';
+import AuthScreen from './components/AuthScreen/AuthScreen';
+import VerifyOtp from './components/UserLoginSignup/VerifyOtp';
 
 
 const Stack = createStackNavigator();
@@ -21,7 +23,8 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar hidden={true}/>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="UserNavigation">
+        <Stack.Navigator initialRouteName="AuthScreen">
+          <Stack.Screen name='AuthScreen' component={AuthScreen} options={{headerShown:false}}/>
           <Stack.Screen name='UserNavigation' component={UserNavigation} options={{headerShown: false}}/>
           <Stack.Screen name="UserLogin" component={UserLogin} options={{ headerShown: false }} />
           <Stack.Screen name="UserSignup" component={UserSignup} options={{ headerShown: false }} />
@@ -32,6 +35,7 @@ export default function App() {
           <Stack.Screen name="Settingspage" component={Settingspage} options={{ headerShown: false }} />
           <Stack.Screen name="Multiselect" component={Multiselect} options={{ headerShown: false }} />
           <Stack.Screen name="MySheets" component={MySheets} options={{ headerShown: false}} />
+          <Stack.Screen name="verifyotp" component={VerifyOtp} options={{ headerShown: false}} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
